@@ -15,7 +15,7 @@ CREATE TABLE Usuario(
 IDU int IDENTITY (1,1) NOT NULL,
 Nombre varchar(50) NOT NULL,
 Correo varchar(50) NOT NULL,
-Contraseña varchar(50) NOT NULL,
+Contraseña varchar(500) NOT NULL,
 CONSTRAINT [PK_IDU]PRIMARY KEY CLUSTERED
 (
 IDU ASC
@@ -64,58 +64,4 @@ GO
 ALTER TABLE [dbo].[Viaje] CHECK CONSTRAINT [FK_Viaje_Compra]
 GO
 
---Registro de usuario
-CREATE PROCEDURE RegistraUS(
-@Nombre varchar(50),
-@Correo varchar(50),
-@Contraseña varchar(50)
-)
-AS
-BEGIN
-INSERT INTO Usuario(Nombre,Correo,Contraseña)
-VALUES
-(
-@Nombre,
-@Correo,
-@Contraseña
-)
-END
-GO
 
-
---Registro de Compra
-CREATE PROCEDURE RegistraC(
-@Total float,
-@IDU int
-)
-AS
-BEGIN
-INSERT INTO Compra(Total,IDU)
-VALUES
-(
-@Total,
-@IDU
-)
-END
-GO
---Crear Viaje
-CREATE PROCEDURE RegistraV(
-@NombreV varchar(50),
-@Descripcion varchar(50),
-@IDC int,
-@Precio varchar (50),
-@Fecha datetime
-)
-AS
-BEGIN
-INSERT INTO Viaje(NombreV,Descripcion,IDC,Precio,Fecha)
-VALUES
-(
-@NombreV,
-@Descripcion,
-@IDC,
-@Precio,
-@Fecha
-)
-END
-GO
