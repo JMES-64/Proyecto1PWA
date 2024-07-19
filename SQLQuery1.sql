@@ -36,11 +36,16 @@ GO
 
 CREATE TABLE Viaje(
 IDV int IDENTITY (1,1) NOT NULL,
-NombreV varchar(50) NOT NULL,
-Descripcion varchar(50) NOT NULL,
-IDC int NOT NULL,
-Precio float NOT NULL,
+Origen varchar(max) NOT NULL,
+Destino varchar(max) NOT NULL,
 Fecha datetime NOT NULL,
+Regreso datetime NOT NULL,
+Adulto int NOT NULL,
+Infante int NOT NULL,
+Niño int NOT NULL,	
+Clase varchar(max) NOT NULL,
+Precio float NOT NULL,
+IDC int NOT NULL,
 CONSTRAINT [PK_IDV] PRIMARY KEY CLUSTERED 
 (
 IDV ASC
