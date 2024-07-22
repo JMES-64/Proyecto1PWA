@@ -36,15 +36,15 @@ GO
 
 CREATE TABLE Viaje(
 IDV int IDENTITY (1,1) NOT NULL,
-Origen varchar(max) NOT NULL,
-Destino varchar(max) NOT NULL,
-Fecha datetime NOT NULL,
-Regreso datetime NOT NULL,
-Adulto int NOT NULL,
-Infante int NOT NULL,
-Niño int NOT NULL,	
-Clase varchar(max) NOT NULL,
-Precio float NOT NULL,
+originLocationCode varchar(max) NOT NULL,
+destinationLocationCode varchar(max) NOT NULL,
+departureDate datetime NOT NULL,
+returnDate datetime NOT NULL,
+adults int NOT NULL,
+children int NOT NULL,
+infants int NOT NULL,	
+travelClass varchar(max) NOT NULL,
+maxPrice float NOT NULL,
 IDC int NOT NULL,
 CONSTRAINT [PK_IDV] PRIMARY KEY CLUSTERED 
 (
@@ -67,6 +67,22 @@ ALTER TABLE Viaje  WITH CHECK ADD  CONSTRAINT [FK_Viaje_Compra] FOREIGN KEY(IDC)
 REFERENCES Compra (IDC)
 GO
 ALTER TABLE [dbo].[Viaje] CHECK CONSTRAINT [FK_Viaje_Compra]
+GO
+
+
+CREATE PROCEDURE EditaUs(
+@IDU int,
+@Nombre varchar(max),
+@Correo varchar(max),
+@Contraseña varchar(max)
+)
+AS BEGIN
+UPDATE Usuario SET
+Nombre= @Nombre,
+Correo= @Correo,
+Contraseña= @Contraseña
+WHERE IDU=@IDU
+END
 GO
 
 
